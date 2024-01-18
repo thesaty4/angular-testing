@@ -24,13 +24,36 @@ export class DestroyExampleComponent implements OnDestroy {
     });
   }
 
+  /**
+   * Lifecycle hook called just before the component is destroyed.
+   * @method
+   * @memberof ExampleComponent
+   */
   ngOnDestroy() {
     // Cleanup tasks before the component is destroyed
     if (this.subscription && !this.subscription.closed) {
+      /**
+       * Unsubscribes from the observable to prevent memory leaks.
+       * @function
+       * @memberof ExampleComponent
+       */
       this.subscription.unsubscribe();
+
+      /**
+       * Logs a message indicating successful unsubscription from the observable.
+       * @function
+       * @name console.log
+       * @param {string} message - The log message.
+       */
       console.log('Unsubscribed from the observable.');
     }
 
+    /**
+     * Logs a message indicating that the ngOnDestroy lifecycle hook has been called and the component is about to be destroyed.
+     * @function
+     * @name console.log
+     * @param {string} message - The log message.
+     */
     console.log('ngOnDestroy called. Component is about to be destroyed.');
   }
 }
